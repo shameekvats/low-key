@@ -1,0 +1,211 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace;
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header */
+header {
+    text-align: left;
+    margin-bottom: 60px;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+/* Featured Event Poster */
+.featured-event {
+    margin-bottom: 80px;
+}
+
+.poster-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.event-poster {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: #f0f0f0;
+    min-height: 400px;
+    object-fit: cover;
+}
+
+.poster-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 40px 30px 30px;
+    color: #ffffff;
+}
+
+.poster-overlay h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.poster-overlay .event-date {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.btn-tickets {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.btn-tickets:hover {
+    opacity: 1;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Events List */
+.events-list {
+    margin-bottom: 60px;
+}
+
+.event-items {
+    list-style: none;
+}
+
+.event-item {
+    display: flex;
+    align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.event-item:first-child {
+    border-top: 1px solid #e0e0e0;
+}
+
+.event-date {
+    font-size: 0.9rem;
+    min-width: 120px;
+    color: #666666;
+    font-weight: 400;
+}
+
+.event-link {
+    font-size: 1rem;
+    text-transform: lowercase;
+    flex: 1;
+}
+
+.event-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: right;
+    padding: 40px 0 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.footer-links a {
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 15px;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .event-item {
+        flex-direction: column;
+        gap: 5px;
+        padding: 20px 0;
+    }
+
+    .event-date {
+        min-width: auto;
+        font-size: 0.85rem;
+    }
+
+    .poster-overlay {
+        padding: 30px 20px 20px;
+    }
+
+    .poster-overlay h2 {
+        font-size: 1rem;
+    }
+
+    .btn-tickets {
+        padding: 10px 25px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Placeholder for poster image */
+.event-poster:not([src]),
+.event-poster[src=""],
+.event-poster[src="images/poster.jpg"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
