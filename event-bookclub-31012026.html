@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Club 003: Back to School - Low Key Events</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .event-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        .event-poster-full {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-details {
+            line-height: 1.8;
+        }
+
+        .event-details h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .event-details h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .event-meta {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+        }
+
+        .event-meta p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+
+        .event-description {
+            margin-bottom: 40px;
+        }
+
+        .event-description p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .btn-tickets-large {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .btn-tickets-large:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .event-details h1 {
+                font-size: 1.5rem;
+            }
+
+            .event-details h2 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="images/logo.png" alt="Low Key" class="logo">
+        </header>
+
+        <div class="event-page">
+            <a href="index.html" class="back-link">← back to events</a>
+
+            <img src="images/BookClub_31012026.png" alt="Book Club 003: Back to School" class="event-poster-full">
+
+            <div class="event-details">
+                <h1>Book Club 003: Back to School</h1>
+                <h2>The third installment of our weirdly beloved Book Club series.</h2>
+
+                <div class="event-meta">
+                    <p>📅 <strong>Date:</strong> 31 January 2026</p>
+                    <p>📍 <strong>Location:</strong> Brand new venue</p>
+                </div>
+
+                <div class="event-description">
+                    <p>Book Club returns with a chaotic academic twist. We're calling it <strong>Back to School</strong>, but don't worry—there will be no tests, no grades, and absolutely no actual school. A long session with quality selectors.</p>
+                    <p>Stay tuned for more info.</p>
+                </div>
+
+                <!-- Uncomment when tickets are available -->
+                <!-- <a href="#" class="btn-tickets-large">Get Tickets</a> -->
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-links">
+                <a href="mailto:hello@lowkeyevents.com">contact</a>
+                <a href="https://www.instagram.com/lowkey_lxb/" target="_blank">instagram</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
