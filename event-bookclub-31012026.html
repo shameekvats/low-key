@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Club 003: Back to School - Low Key Events</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://js.stripe.com/v3/"></script>
     <style>
         .event-page {
             max-width: 800px;
@@ -136,7 +135,7 @@
                     <p>Stay tuned for more info.</p>
                 </div>
 
-                <button onclick="redirectToCheckout()" class="btn-tickets-large" id="checkout-button">Get Tickets</button>
+                <a href="https://buy.stripe.com/test_00w4gzbIV1SO2S28zObII00" class="btn-tickets-large" target="_blank">Get Tickets</a>
             </div>
         </div>
 
@@ -149,60 +148,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Initialize Stripe with your publishable key
-        console.log('Initializing Stripe...');
-        const stripe = Stripe('pk_test_51SUwFJD9zGYXsKI0qPc7lTactHH9QUJJvk6Soz8BtcU3eshTLeYyxI97UMnrD1f6aInZGut9kGKFXE2uKUiXQRMX00xdiZYtjU');
-        console.log('Stripe initialized successfully');
-
-        async function redirectToCheckout() {
-            console.log('Get Tickets button clicked!');
-            const button = document.getElementById('checkout-button');
-            button.disabled = true;
-            button.textContent = 'Loading...';
-
-            try {
-                console.log('Redirecting to Stripe Checkout...');
-                const { error } = await stripe.redirectToCheckout({
-                    lineItems: [
-                        {
-                            price: 'price_1Sbl13D9zGYXsKI0fZmdVGHK',
-                            quantity: 1
-                        }
-                    ],
-                    mode: 'payment',
-                    successUrl: window.location.origin + '/success.html',
-                    cancelUrl: window.location.origin + '/event-bookclub-31012026.html',
-                    billingAddressCollection: 'auto',
-                    shippingAddressCollection: {
-                        allowedCountries: ['LU', 'DE', 'FR', 'BE', 'NL']
-                    },
-                });
-
-                if (error) {
-                    console.error('Stripe error:', error);
-                    alert('Payment error: ' + error.message);
-                    button.disabled = false;
-                    button.textContent = 'Get Tickets';
-                }
-            } catch (err) {
-                console.error('Error:', err);
-                alert('Error: ' + err.message);
-                button.disabled = false;
-                button.textContent = 'Get Tickets';
-            }
-        }
-
-        // Test if button exists
-        window.addEventListener('DOMContentLoaded', function() {
-            const button = document.getElementById('checkout-button');
-            console.log('Button found:', button);
-            if (button) {
-                console.log('Button is ready to use');
-            } else {
-                console.error('Button not found!');
-            }
-        });
-    </script>
 </body>
 </html>
