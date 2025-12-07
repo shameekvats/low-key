@@ -152,7 +152,7 @@
     <script>
         // Initialize Stripe with your publishable key
         console.log('Initializing Stripe...');
-        const stripe = Stripe('pk_test_51SbkuKRaqlpgl9qmk3RgvOkSiUS7G4x7J5Qb7CPlv5Gs3SpPcgqddfbCgCO9vv9Q45WvlZdNnQJDG7jKk2hVQ7a0000C49DBaW');
+        const stripe = Stripe('pk_test_51SUwFJD9zGYXsKI0qPc7lTactHH9QUJJvk6Soz8BtcU3eshTLeYyxI97UMnrD1f6aInZGut9kGKFXE2uKUiXQRMX00xdiZYtjU');
         console.log('Stripe initialized successfully');
 
         async function redirectToCheckout() {
@@ -166,7 +166,7 @@
                 const { error } = await stripe.redirectToCheckout({
                     lineItems: [
                         {
-                            price: 'price_1SblosRaqlpgl9qmSd59rqUu',
+                            price: 'price_1Sbl13D9zGYXsKI0fZmdVGHK',
                             quantity: 1
                         }
                     ],
