@@ -86,10 +86,18 @@
             letter-spacing: 1px;
             transition: all 0.2s ease;
             margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace;
         }
 
         .btn-tickets-large:hover {
             opacity: 0.8;
+        }
+
+        .btn-tickets-large:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         @media (max-width: 768px) {
@@ -143,14 +151,18 @@
     <script src="script.js"></script>
     <script>
         // Initialize Stripe with your publishable key
+        console.log('Initializing Stripe...');
         const stripe = Stripe('pk_test_51SbkuKRaqlpgl9qmk3RgvOkSiUS7G4x7J5Qb7CPlv5Gs3SpPcgqddfbCgCO9vv9Q45WvlZdNnQJDG7jKk2hVQ7a0000C49DBaW');
+        console.log('Stripe initialized successfully');
 
         async function redirectToCheckout() {
+            console.log('Get Tickets button clicked!');
             const button = document.getElementById('checkout-button');
             button.disabled = true;
             button.textContent = 'Loading...';
 
             try {
+                console.log('Redirecting to Stripe Checkout...');
                 const { error } = await stripe.redirectToCheckout({
                     lineItems: [
                         {
@@ -163,21 +175,34 @@
                     cancelUrl: window.location.origin + '/event-bookclub-31012026.html',
                     billingAddressCollection: 'auto',
                     shippingAddressCollection: {
-                        allowedCountries: ['LU', 'DE', 'FR', 'BE', 'NL'] // Add countries you want to allow
+                        allowedCountries: ['LU', 'DE', 'FR', 'BE', 'NL']
                     },
                 });
 
                 if (error) {
+                    console.error('Stripe error:', error);
                     alert('Payment error: ' + error.message);
                     button.disabled = false;
                     button.textContent = 'Get Tickets';
                 }
             } catch (err) {
                 console.error('Error:', err);
+                alert('Error: ' + err.message);
                 button.disabled = false;
                 button.textContent = 'Get Tickets';
             }
         }
+
+        // Test if button exists
+        window.addEventListener('DOMContentLoaded', function() {
+            const button = document.getElementById('checkout-button');
+            console.log('Button found:', button);
+            if (button) {
+                console.log('Button is ready to use');
+            } else {
+                console.error('Button not found!');
+            }
+        });
     </script>
 </body>
 </html>
