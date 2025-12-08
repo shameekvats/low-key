@@ -1,0 +1,65 @@
+// Vercel Serverless Function for Stripe Checkout (ES6)
+import Stripe from 'stripe';
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+export default async function handler(req, res) {
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  if (req.method !== 'POST') {
+    res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
+
+  try {
+    const { priceId, quantity = 1, email, collectPhone = false } = req.body;
+
+    if (!priceId) {
+      res.status(400).json({ error: 'Price ID is required' });
+      return;
+    }
+
+    // Create Checkout Session
+    const sessionConfig = {
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price: priceId,
+          quantity: parseInt(quantity),
+        },
+      ],
+      mode: 'payment',
+      success_url: `${req.headers.origin || 'https://low-key-blond.vercel.app'}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${req.headers.origin || 'https://low-key-blond.vercel.app'}/event-bookclub-31012026.html`,
+      billing_address_collection: 'required',
+    };
+
+    // Add phone collection only if requested
+    if (collectPhone) {
+      sessionConfig.phone_number_collection = { enabled: true };
+    }
+
+    // Add customer email if provided
+    if (email) {
+      sessionConfig.customer_email = email;
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionConfig);
+
+    res.status(200).json({ sessionId: session.id, url: session.url });
+  } catch (err) {
+    console.error('Error creating checkout session:', err);
+    res.status(500).json({ error: err.message });
+  }
+}

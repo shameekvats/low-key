@@ -73,6 +73,29 @@
             line-height: 1.8;
         }
 
+        .ticket-selection {
+            margin: 30px 0 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+        }
+
+        .ticket-selection label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .ticket-selection input {
+            width: 100px;
+            padding: 10px;
+            font-size: 1rem;
+            font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
         .btn-tickets-large {
             display: inline-block;
             padding: 15px 40px;
@@ -135,7 +158,12 @@
                     <p>Stay tuned for more info.</p>
                 </div>
 
-                <a href="https://buy.stripe.com/test_00w4gzbIV1SO2S28zObII00" class="btn-tickets-large" target="_blank">Get Tickets</a>
+                <div class="ticket-selection">
+                    <label for="quantity">Number of Tickets:</label>
+                    <input type="number" id="quantity" min="1" max="10" value="1">
+                </div>
+
+                <button onclick="buyTickets()" class="btn-tickets-large" id="checkout-button">Get Tickets</button>
             </div>
         </div>
 
@@ -148,5 +176,50 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        async function buyTickets() {
+            const button = document.getElementById('checkout-button');
+            const quantityInput = document.getElementById('quantity');
+            const quantity = parseInt(quantityInput.value) || 1;
+
+            // Validate quantity
+            if (quantity < 1 || quantity > 10) {
+                alert('Please select between 1 and 10 tickets');
+                return;
+            }
+
+            // Disable button and show loading
+            button.disabled = true;
+            button.textContent = 'Loading...';
+
+            try {
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        priceId: 'price_1Sbl13D9zGYXsKI0fZmdVGHK', // Your Stripe Price ID
+                        quantity: quantity,
+                        collectPhone: false // Set to true if you want to collect phone numbers
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+                } else {
+                    throw new Error(data.error || 'Failed to create checkout session');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+                button.disabled = false;
+                button.textContent = 'Get Tickets';
+            }
+        }
+    </script>
 </body>
 </html>

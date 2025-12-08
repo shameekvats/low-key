@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "name": "low-key-events",
+  "version": "1.0.0",
+  "description": "Low Key Events Website with Stripe Integration",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
