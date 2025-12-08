@@ -30,7 +30,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Create Checkout Session
+    // Create Checkout Session with customer creation
     const sessionConfig = {
       payment_method_types: ['card'],
       line_items: [
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
       mode: 'payment',
       success_url: `${req.headers.origin || 'https://low-key-blond.vercel.app'}/success.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin || 'https://low-key-blond.vercel.app'}/event-bookclub-31012026.html`,
-      billing_address_collection: 'required',
+      customer_creation: 'always', // Always create a customer
     };
 
     // Add phone collection only if requested
