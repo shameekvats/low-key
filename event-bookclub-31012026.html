@@ -161,6 +161,12 @@
                 </div>
 
                 <div class="ticket-selection">
+                    <label for="ticket-type">Ticket Type:</label>
+                    <select id="ticket-type" style="width: 100%; padding: 10px; margin-bottom: 20px; font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace; border: 1px solid #ccc; border-radius: 4px;">
+                        <option value="price_1ScNcARaqlpgl9qmjreuzBhK">Standard Ticket</option>
+                        <option value="price_1ScrMiRaqlpgl9qmKiL1qCKC">VIP Ticket</option>
+                    </select>
+                    
                     <label for="quantity">Number of Tickets:</label>
                     <input type="number" id="quantity" min="1" max="10" value="1">
                 </div>
@@ -182,7 +188,9 @@
         async function buyTickets() {
             const button = document.getElementById('checkout-button');
             const quantityInput = document.getElementById('quantity');
+            const ticketTypeSelect = document.getElementById('ticket-type');
             const quantity = parseInt(quantityInput.value) || 1;
+            const priceId = ticketTypeSelect.value;
 
             // Validate quantity
             if (quantity < 1 || quantity > 10) {
@@ -201,7 +209,7 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        priceId: 'price_1ScNcARaqlpgl9qmjreuzBhK', // Live Stripe Price ID
+                        priceId: priceId, // Selected ticket type Price ID
                         quantity: quantity,
                         collectPhone: false // Set to true if you want to collect phone numbers
                     }),
