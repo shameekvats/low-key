@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Club 002 - Low Key Events</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .event-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        .event-poster-full {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-details {
+            line-height: 1.8;
+        }
+
+        .event-details h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .event-details h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .event-meta {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+        }
+
+        .event-meta p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+
+        .event-description {
+            margin-bottom: 40px;
+        }
+
+        .event-description p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .event-details h1 {
+                font-size: 1.5rem;
+            }
+
+            .event-details h2 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html">
+                <img src="images/logo.png" alt="Low Key" class="logo">
+            </a>
+        </header>
+
+        <div class="event-page">
+            <a href="index.html" class="back-link">← back to events</a>
+
+            <img src="images/BookClub_01022025.jpeg" alt="Book Club 002" class="event-poster-full">
+
+            <div class="event-details">
+                <h1>Book Club 002</h1>
+                <h2>The second chapter</h2>
+
+                <div class="event-meta">
+                    <p>📅 <strong>Date:</strong> Saturday, 01 February 2025</p>
+                    <p>📍 <strong>Location:</strong> TBA</p>
+                </div>
+
+                <div class="event-description">
+                    <p>[Event description to be added]</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-links">
+                <a href="mailto:lowkeylxb@gmail.com">contact</a>
+                <a href="https://www.instagram.com/lowkey_lxb/" target="_blank">instagram</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
