@@ -7,14 +7,14 @@
 
 body {
     font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #000000;
+    color: #ffffff;
     line-height: 1.6;
     font-size: 16px;
 }
 
 a {
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
@@ -61,7 +61,7 @@ header {
     width: 100%;
     height: auto;
     display: block;
-    background-color: #f0f0f0;
+    background-color: #1a1a1a;
     min-height: 400px;
     object-fit: cover;
 }
@@ -71,9 +71,9 @@ header {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
     padding: 40px 30px 30px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .poster-overlay h2 {
@@ -93,8 +93,8 @@ header {
 .btn-tickets {
     display: inline-block;
     padding: 12px 30px;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #000000;
+    color: #ffffff;
     border-radius: 3px;
     font-size: 0.9rem;
     font-weight: 500;
@@ -105,8 +105,8 @@ header {
 
 .btn-tickets:hover {
     opacity: 1;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 /* Events List */
@@ -122,17 +122,17 @@ header {
     display: flex;
     align-items: baseline;
     padding: 15px 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #333333;
 }
 
 .event-item:first-child {
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #333333;
 }
 
 .event-date {
     font-size: 0.9rem;
     min-width: 120px;
-    color: #666666;
+    color: #999999;
     font-weight: 400;
 }
 
@@ -150,7 +150,7 @@ header {
 footer {
     text-align: right;
     padding: 40px 0 20px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #333333;
 }
 
 .footer-links {
