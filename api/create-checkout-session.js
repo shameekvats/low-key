@@ -50,7 +50,7 @@ export default async function handler(req, res) {
         event_name: 'Book Club 003: Back to School',
         event_date: 'Friday, January 30, 2026',
         event_time: '21h till late',
-        event_organizer: 'Low Key Events',
+        event_location: '📍 Restaurant Phenicia, 7 Av JFK, Kirchberg (Infinity)',
         contact_email: 'lowkeylxb@gmail.com',
       },
     };
