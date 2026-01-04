@@ -44,6 +44,15 @@ export default async function handler(req, res) {
       cancel_url: `${req.headers.origin || 'https://low-key-blond.vercel.app'}/event-bookclub-31012026.html`,
       customer_creation: 'always', // Always create a customer
 //      billing_address_collection: 'never', // Do not collect billing address
+      
+      // Metadata that appears in receipts for all tickets
+      metadata: {
+        event_name: 'Book Club 003: Back to School',
+        event_date: 'Friday, January 30, 2026',
+        event_time: '21h till late',
+        event_organizer: 'Low Key Events',
+        contact_email: 'lowkeylxb@gmail.com',
+      },
     };
 
     // Add phone collection only if requested
