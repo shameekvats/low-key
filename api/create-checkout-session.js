@@ -40,8 +40,8 @@ export default async function handler(req, res) {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.origin || 'https://low-key-blond.vercel.app'}/success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin || 'https://low-key-blond.vercel.app'}/event-bookclub-31012026.html`,
+      success_url: `${req.headers.origin || 'https://lowkey.lu'}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${req.headers.origin || 'https://lowkey.lu'}/event-bookclub-31012026.html`,
       customer_creation: 'always', // Always create a customer
 //      billing_address_collection: 'never', // Do not collect billing address
       
@@ -52,6 +52,17 @@ export default async function handler(req, res) {
         event_time: '21h till late',
         event_location: '📍 Restaurant Phenicia, 7 Av JFK, Kirchberg (Infinity)',
         contact_email: 'lowkeylxb@gmail.com',
+      },
+      
+      // Add to payment intent so metadata appears in receipt
+      payment_intent_data: {
+        metadata: {
+          event_name: 'Book Club 003: Back to School',
+          event_date: 'Friday, January 30, 2026',
+          event_time: '21h till late',
+          event_location: '📍 Restaurant Phenicia, 7 Av JFK, Kirchberg (Infinity)',
+          contact_email: 'lowkeylxb@gmail.com',
+        },
       },
     };
 
