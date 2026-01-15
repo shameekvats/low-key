@@ -171,17 +171,28 @@
                 </div>
 
                 <div class="ticket-selection">
-                    <label for="ticket-type">Ticket Type:</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label for="first-name">First name:</label>
+                            <input type="text" id="first-name" style="width: 100%; padding: 10px; font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace; background-color: #ffffff; color: #000000; border: 1px solid #333333; border-radius: 4px;" required>
+                        </div>
+                        <div>
+                            <label for="last-name">Last name:</label>
+                            <input type="text" id="last-name" style="width: 100%; padding: 10px; font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace; background-color: #ffffff; color: #000000; border: 1px solid #333333; border-radius: 4px;" required>
+                        </div>
+                    </div>
+                    
+                    <label for="ticket-type">Ticket type:</label>
                     <select id="ticket-type" style="width: 100%; padding: 10px; margin-bottom: 20px; font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace; background-color: #ffffff; color: #000000; border: 1px solid #333333; border-radius: 4px;">
                         <option value="price_1SlQv7Raqlpgl9qmk6SC4M8M">General entry - phase 1</option>
                         <option value="price_1SlQuSRaqlpgl9qmgK54y3UO">Entry before 23h - phase 1</option>
                     </select>
                     
-                    <label for="quantity">Number of Tickets:</label>
+                    <label for="quantity">Total number of people joining:</label>
                     <input type="number" id="quantity" min="1" max="10" value="1">
                 </div>
 
-                <button onclick="buyTickets()" class="btn-tickets-large" id="checkout-button">Get Tickets</button>
+                <button onclick="buyTickets()" class="btn-tickets-large" id="checkout-button">Book your spots</button>
             </div>
         </div>
 
@@ -197,14 +208,24 @@
     <script>
         async function buyTickets() {
             const button = document.getElementById('checkout-button');
+            const firstNameInput = document.getElementById('first-name');
+            const lastNameInput = document.getElementById('last-name');
             const quantityInput = document.getElementById('quantity');
             const ticketTypeSelect = document.getElementById('ticket-type');
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
             const quantity = parseInt(quantityInput.value) || 1;
             const priceId = ticketTypeSelect.value;
 
+            // Validate inputs
+            if (!firstName || !lastName) {
+                alert('Please enter both first and last name');
+                return;
+            }
+
             // Validate quantity
             if (quantity < 1 || quantity > 10) {
-                alert('Please select between 1 and 10 tickets');
+                alert('Please select between 1 and 10 people');
                 return;
             }
 
@@ -219,9 +240,11 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        priceId: priceId, // Selected ticket type Price ID
+                        priceId: priceId,
                         quantity: quantity,
-                        collectPhone: false // Set to true if you want to collect phone numbers
+                        firstName: firstName,
+                        lastName: lastName,
+                        collectPhone: false
                     }),
                 });
 
@@ -237,7 +260,7 @@
                 console.error('Error:', error);
                 alert('Error: ' + error.message);
                 button.disabled = false;
-                button.textContent = 'Get Tickets';
+                button.textContent = 'Book your spots';
             }
         }
     </script>
