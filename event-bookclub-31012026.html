@@ -170,29 +170,10 @@
                     <p>see you on the dancefloor,<br>low key xx</p>
                 </div>
 
-                <div class="ticket-selection">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                        <div>
-                            <label for="first-name">First name:</label>
-                            <input type="text" id="first-name" style="width: 100%; padding: 10px; font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace; background-color: #ffffff; color: #000000; border: 1px solid #333333; border-radius: 4px;" required>
-                        </div>
-                        <div>
-                            <label for="last-name">Last name:</label>
-                            <input type="text" id="last-name" style="width: 100%; padding: 10px; font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace; background-color: #ffffff; color: #000000; border: 1px solid #333333; border-radius: 4px;" required>
-                        </div>
-                    </div>
-                    
-                    <label for="ticket-type">Ticket type:</label>
-                    <select id="ticket-type" style="width: 100%; padding: 10px; margin-bottom: 20px; font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace; background-color: #ffffff; color: #000000; border: 1px solid #333333; border-radius: 4px;">
-                        <option value="price_1St5OnRaqlpgl9qmSyz8mGNU">General Entry Phase 2</option>
-                        <option value="price_1St5OCRaqlpgl9qmcVQ36mpq">Entry before 23h Phase 2</option>
-                    </select>
-                    
-                    <label for="quantity">Total number of people joining:</label>
-                    <input type="number" id="quantity" min="1" max="10" value="1">
+                <div class="ticket-selection" style="text-align: center; padding: 30px 20px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 15px; font-weight: 500;">Tickets available at the door until full house</p>
+                    <p style="font-size: 1.1rem; line-height: 1.6;">€13 before 23h, €15 after</p>
                 </div>
-
-                <button onclick="buyTickets()" class="btn-tickets-large" id="checkout-button">Book your spots</button>
             </div>
         </div>
 
