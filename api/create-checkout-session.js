@@ -41,26 +41,26 @@ export default async function handler(req, res) {
       ],
       mode: 'payment',
       success_url: `${req.headers.origin || 'https://lowkey.lu'}/success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin || 'https://lowkey.lu'}/event-bookclub-31012026.html`,
+      cancel_url: `${req.headers.origin || 'https://lowkey.lu'}/event-moonresort-13032026.html`,
       customer_creation: 'always', // Always create a customer
 //      billing_address_collection: 'never', // Do not collect billing address
       
       // Metadata that appears in receipts for all tickets
       metadata: {
-        event_name: 'Book Club 003: Back to School',
-        event_date: 'Friday, January 30, 2026',
-        event_time: '21h till late',
-        event_location: '📍 Restaurant Phenicia, 7 Av JFK, Kirchberg (Infinity)',
+        event_name: 'Moon Resort: Low Key × Radio Paffental',
+        event_date: 'Friday, March 13, 2026',
+        event_time: '21h — 03h',
+        event_location: '📍 Brasserie Abtei, Neimenster Abbey',
         contact_email: 'lowkeylxb@gmail.com',
       },
       
       // Add to payment intent so metadata appears in receipt
       payment_intent_data: {
         metadata: {
-          event_name: 'Book Club 003: Back to School',
-          event_date: 'Friday, January 30, 2026',
-          event_time: '21h till late',
-          event_location: '📍 Restaurant Phenicia, 7 Av JFK, Kirchberg (Infinity)',
+          event_name: 'Moon Resort: Low Key × Radio Paffental',
+          event_date: 'Friday, March 13, 2026',
+          event_time: '21h — 03h',
+          event_location: '📍 Brasserie Abtei, Neimenster Abbey',
           contact_email: 'lowkeylxb@gmail.com',
         },
       },

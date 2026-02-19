@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon Resort: Low Key × Radio Paffental - Low Key Events</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .event-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        .event-poster-full {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-details {
+            line-height: 1.8;
+        }
+
+        .event-details h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .event-details h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .event-meta {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 4px;
+        }
+
+        .event-meta p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+
+        .event-description {
+            margin-bottom: 40px;
+        }
+
+        .event-description p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.8;
+            text-transform: lowercase;
+        }
+
+        .ticket-selection {
+            margin: 30px 0 20px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            font-family: "Courier New", monospace;
+            font-size: 1rem;
+            background-color: #ffffff;
+            color: #000000;
+            box-sizing: border-box;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-tickets-large {
+            width: 100%;
+            padding: 15px 30px;
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: "Courier New", monospace;
+            transition: all 0.2s;
+            margin-top: 15px;
+        }
+
+        .btn-tickets-large:hover {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+
+        .btn-tickets-large:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .event-details h1 {
+                font-size: 1.5rem;
+            }
+
+            .event-details h2 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html">
+                <img src="images/logo.png" alt="Low Key" class="logo">
+            </a>
+        </header>
+
+        <div class="event-page">
+            <a href="index.html" class="back-link">← back to events</a>
+
+            <img src="images/logo.png" alt="Moon Resort: Low Key × Radio Paffental" class="event-poster-full">
+
+            <div class="event-details">
+                <h1>Moon Resort: Low Key × Radio Paffental</h1>
+                <h2>A certified banger event with our strongest lineup to date.</h2>
+
+                <div class="event-meta">
+                    <p>📅 <strong>Date:</strong> March 13, 2026 (Friday)</p>
+                    <p>⏳ <strong>Time:</strong> 21h — 03h</p>
+                    <p>📍 <strong>Location:</strong> Brasserie Abtei, Neimenster Abbey</p>
+                </div>
+
+                <div class="event-description">
+                    <p>after last november's bombastic event with radio paffental, we're coming back with another collab — and this time we're bringing our strongest lineup to date - a certified banger event.</p>
+                    
+                    <p><strong>line up:</strong></p>
+                    
+                    <p><strong>daymount</strong> — full solo set<br>
+                    paris-based selector, founder of panchama records and panchama fight klub collective. mainly inspired by rominimal, his sound blends house and techno, moving through deep, minimal, tech-house, electro, progressive and breakbeat.</p>
+                    
+                    <p><strong>dixia sirong (duo) b3b ashik</strong><br>
+                    other half of dixia sirong is coming straight from Paris to complete the duo and deliver a sick B3B with our resident ashik.</p>
+                    
+                    <p><strong>liam & marq b3b svelte</strong><br>
+                    this trio is simply a recipe of disaster that we are sure you'd vibe with.</p>
+                    
+                    <p>that's all.</p>
+                    
+                    <p>watch this space on friday 13 march (21h — 03h).<br>
+                    brasserie abtei, neimenster abbey.</p>
+                </div>
+
+                <div class="ticket-selection">
+                    <form id="ticket-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" name="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quantity">Number of people</label>
+                            <select id="quantity" name="quantity">
+                                <option value="1">1 person</option>
+                                <option value="2">2 people</option>
+                                <option value="3">3 people</option>
+                                <option value="4">4 people</option>
+                                <option value="5">5 people</option>
+                                <option value="6">6 people</option>
+                                <option value="7">7 people</option>
+                                <option value="8">8 people</option>
+                                <option value="9">9 people</option>
+                                <option value="10">10 people</option>
+                            </select>
+                        </div>
+
+                        <input type="hidden" id="ticket-type" value="price_1T2FqERaqlpgl9qmcA52yaaq">
+
+                        <button type="button" id="checkout-button" class="btn-tickets-large" onclick="buyTickets()">
+                            Book your spots
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-links">
+                <a href="mailto:lowkeylxb@gmail.com">contact</a>
+                <a href="https://www.instagram.com/lowkey_lxb/" target="_blank">instagram</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        async function buyTickets() {
+            const button = document.getElementById('checkout-button');
+            const firstNameInput = document.getElementById('first-name');
+            const lastNameInput = document.getElementById('last-name');
+            const quantityInput = document.getElementById('quantity');
+            const ticketTypeSelect = document.getElementById('ticket-type');
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
+            const quantity = parseInt(quantityInput.value) || 1;
+            const priceId = ticketTypeSelect.value;
+
+            // Validate inputs
+            if (!firstName || !lastName) {
+                alert('Please enter both first and last name');
+                return;
+            }
+
+            // Validate quantity
+            if (quantity < 1 || quantity > 10) {
+                alert('Please select between 1 and 10 people');
+                return;
+            }
+
+            // Disable button and show loading
+            button.disabled = true;
+            button.textContent = 'Loading...';
+
+            try {
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        priceId: priceId,
+                        quantity: quantity,
+                        firstName: firstName,
+                        lastName: lastName,
+                        collectPhone: false
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+                } else {
+                    throw new Error(data.error || 'Failed to create checkout session');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+                button.disabled = false;
+                button.textContent = 'Book your spots';
+            }
+        }
+    </script>
+</body>
+</html>
