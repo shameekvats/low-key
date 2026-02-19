@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       ],
       mode: 'payment',
       success_url: `${req.headers.origin || 'https://lowkey.lu'}/success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin || 'https://lowkey.lu'}/event-moonresort-13032026.html`,
+      cancel_url: `${req.headers.origin || 'https://lowkey.lu'}/event-journey-13032026.html`,
       customer_creation: 'always', // Always create a customer
 //      billing_address_collection: 'never', // Do not collect billing address
       
