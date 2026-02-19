@@ -47,7 +47,7 @@ export default async function handler(req, res) {
       
       // Metadata that appears in receipts for all tickets
       metadata: {
-        event_name: 'Moon Resort: Low Key × Radio Paffental',
+        event_name: 'The Journey: Low Key × Radio Paffental',
         event_date: 'Friday, March 13, 2026',
         event_time: '21h — 03h',
         event_location: '📍 Brasserie Abtei, Neimenster Abbey',
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
       // Add to payment intent so metadata appears in receipt
       payment_intent_data: {
         metadata: {
-          event_name: 'Moon Resort: Low Key × Radio Paffental',
+          event_name: 'The Journey: Low Key × Radio Paffental',
           event_date: 'Friday, March 13, 2026',
           event_time: '21h — 03h',
           event_location: '📍 Brasserie Abtei, Neimenster Abbey',
