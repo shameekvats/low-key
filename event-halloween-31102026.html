@@ -106,6 +106,50 @@
             color: #ffffff;
         }
 
+        .btn-invite:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            font-family: "Courier New", monospace;
+            font-size: 1rem;
+            background-color: #ffffff;
+            color: #000000;
+            box-sizing: border-box;
+        }
+
+        .form-hp {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+
+        .form-status {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .form-status.error {
+            color: #ff8a8a;
+        }
+
         @media (max-width: 768px) {
             .event-details h1 {
                 font-size: 1.5rem;
@@ -151,13 +195,36 @@
                     <p>🪄 come in halloween mode. this is the night when you get to let your alter ego out 🖤</p>
                 </div>
 
-                <!-- TODO: replace REPLACE_WITH_FORM_URL below with the invite request form link (Google Form / Typeform) before publishing -->
                 <div class="invite-section">
                     <p>this is again an invite based gathering. invites sent to everyone who has joined us before. check your inbox 💌</p>
 
                     <p>not on the list? but would like to join us, fill out the form below and we'll get back to you with an invitation 💚</p>
 
-                    <a href="REPLACE_WITH_FORM_URL" target="_blank" rel="noopener" class="btn-invite">request an invite</a>
+                    <form id="invite-form" novalidate>
+                        <div class="form-group">
+                            <label for="invite-name">name</label>
+                            <input type="text" id="invite-name" name="name" maxlength="100" autocomplete="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="invite-guests">number of people joining</label>
+                            <input type="number" id="invite-guests" name="guests" min="1" max="10" step="1" value="1" inputmode="numeric" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="invite-email">email</label>
+                            <input type="email" id="invite-email" name="email" maxlength="200" autocomplete="email" required>
+                        </div>
+
+                        <!-- honeypot: hidden from people, catches bots -->
+                        <div class="form-hp" aria-hidden="true">
+                            <label for="invite-website">website</label>
+                            <input type="text" id="invite-website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="btn-invite" id="invite-submit">submit</button>
+                        <p class="form-status" id="invite-status" role="status" aria-live="polite"></p>
+                    </form>
                 </div>
             </div>
         </div>
@@ -171,5 +238,72 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        (function () {
+            const form = document.getElementById('invite-form');
+            const button = document.getElementById('invite-submit');
+            const status = document.getElementById('invite-status');
+            const EVENT_NAME = 'halloween: low key x nam ca phe';
+
+            function setStatus(message, isError) {
+                status.textContent = message;
+                status.classList.toggle('error', Boolean(isError));
+            }
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const payload = {
+                    event: EVENT_NAME,
+                    name: form.name.value.trim(),
+                    guests: form.guests.value.trim(),
+                    email: form.email.value.trim(),
+                    website: form.website.value.trim(),
+                };
+
+                if (!payload.name) {
+                    setStatus('please tell us your name.', true);
+                    return;
+                }
+
+                const count = Number(payload.guests);
+                if (!Number.isInteger(count) || count < 1 || count > 10) {
+                    setStatus('please enter how many of you are joining (1-10).', true);
+                    return;
+                }
+
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+                    setStatus('please enter a valid email address.', true);
+                    return;
+                }
+
+                button.disabled = true;
+                button.textContent = 'sending...';
+                setStatus('');
+
+                try {
+                    const response = await fetch('/api/request-invite', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+
+                    const data = await response.json().catch(function () { return {}; });
+
+                    if (!response.ok) {
+                        throw new Error(data.error || 'request failed');
+                    }
+
+                    form.reset();
+                    button.textContent = 'request sent';
+                    setStatus('thank you \u2014 we have your request and will get back to you with an invitation \ud83d\udc9a', false);
+                } catch (err) {
+                    button.disabled = false;
+                    button.textContent = 'request an invite';
+                    setStatus((err.message || 'something went wrong') + ' you can also email us at lowkeylxb@gmail.com', true);
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
